@@ -11,10 +11,11 @@
 int main(){
     Users L;
     int erro, opcao;
-    Criar_usuarios(&L);
+    Criar_Users(&L);
     char nome[50], meu_apelido[30], outro_apelido[30], mensagem[140];
 
     while (opcao!=8){
+        erro=0;
         opcao = 0;
         printf("Caro usuário, suas opções são: \n");
         printf("\t 1) Cadastrar um usuário.\n");
@@ -55,8 +56,8 @@ int main(){
             scanf("%s", outro_apelido);
             Convidar(&L, meu_apelido, outro_apelido, &erro);
             if (erro==0) printf("Pedido encaminhado com sucesso!\n");
-            if (erro==2) printf("Você já é parceiro dessa pessoa\n");
-            if (erro==3) printf("Erro ao digitar seu nome ou da pessoa convidada\n");
+            if (erro==2) printf("Usuário não cadastrado\n");
+            if (erro==3) printf("Você já é parceiro dessa pessoa\n");
         }
 
 
@@ -65,7 +66,7 @@ int main(){
             scanf("%s", meu_apelido);
             Avaliar_pedidos(&L, meu_apelido, &erro);
             if (erro==0) printf("Operação realizada com sucesso\n");
-            if (erro==2) printf("Nome não cadastrado");
+            if (erro==2) printf("Usuário não cadastrado");
         }
 
 
@@ -78,14 +79,15 @@ int main(){
             scanf("%s", mensagem);
             Enviar_mensagem(&L, mensagem, meu_apelido, outro_apelido, &erro);
             if (erro==0) printf("Mensagem enviada com Sucesso\n");
-            if (erro==2) printf("Rementente ou destinatário não encontrado\n");
+            if (erro==2) printf("Usuário não cadastrado\n");
+            if (erro==3) printf("Vocês não são parceiros\n");
         }
 
         else if (opcao==6){
             printf("Entre com seu apelido: ");
             scanf("%s", meu_apelido);
-            printf("Suas mensagens são: \n");
-            Ver_mensagens(&L, meu_apelido);
+            Ver_mensagens(&L, meu_apelido, &erro);
+            if (erro==2) printf("Usuário não cadastrado\n");
         }
 
         else if (opcao==7){}
@@ -99,64 +101,7 @@ int main(){
 
     }
 
-
-
-    /*User *U;
-
-    Criar_usuarios(&L);
-    Cadastro(&L, "marvin", "marvex", &erro);
-    if (erro==1){
-        printf("erro no cadastro 1 \n");
-    }
-    Cadastro(&L, "Matheus", "Siqueira", &erro);
-    if (erro==1){
-        printf("erro no cadastro 2 \n");
-    }
-    Cadastro(&L, "Siqueira", "siqs", &erro);
-    if (erro==1){
-        printf("erro no cadastro 3\n");
-    }
-
-
-    Convidar(&L, "siqs","marvex", &erro);
-    if (erro==1) printf("falta de memória no convite 1\n");
-    else if(erro==2) printf("apelido não encontrado no convite 1\n");
-
-    Convidar(&L, "Siqueira","marvex", &erro);
-    if (erro==1) printf("falta de memória no convite 2\n");
-    else if(erro==2) printf("apelido não encontrado no convite 2\n");
-
-
-    Avaliar_pedidos(&L, "marvex", &erro);
-    if (erro==1) printf("falta de memória na avaliação\n");
-    else if(erro==2) printf("apelido não encontrado na avaliação\n");
-
-
-    Enviar_mensagem(&L, "Eae, bora no podrão?", "siqs", "marvex", &erro);
-    if (erro==1) printf("falta de memória no envio 1\n");
-    else if(erro==2) printf("apelido não encontrado no envio de mensagem 1\n");
-
-    Enviar_mensagem(&L, "Eae, bora no podrão hoje?", "Siqueira", "marvex", &erro);
-    if (erro==1) printf("falta de memória no envio 2\n");
-    else if(erro==2) printf("apelido não encontrado no envio de mensagem 2\n");
-
-
-    Enviar_mensagem(&L, "Eae, bora no podrão amanhã?", "siqs", "marvex", &erro);
-    if (erro==1) printf("falta de memória no envio 2\n");
-    else if(erro==2) printf("apelido não encontrado no envio de mensagem 2\n");
-
-
-    Ver_mensagens(&L, "marvex");
-
-
-
-    Imprime(&L);*/
     Libera(&L);
-
-
-
-
-
     return(0);
 }
 

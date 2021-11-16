@@ -1,22 +1,16 @@
 #include "pilha.h"
 #include <string.h>
-//novo
 void Cria_P(Pilha *L){
-    //Pilha *Laux = (Pilha*) malloc(sizeof(Pilha));
-    //if (Laux==NULL) return(NULL);
-    //else{
     L->init=NULL;
-    //}
 }
 
 void Push(Pilha *L, elem x[140], int *erro){
     no_P *p;
     p = (no_P*) malloc(sizeof(no_P));
-    if (p==NULL) *erro = 1;
+    if (p==NULL) *erro = 1; // Erro ao criar espaço na memória
     else{
         *erro = 0;
-        strcpy(p->info, x); // atribui x a info.
-        //p->info = x;
+        strcpy(p->info, x); 
         p->prox = L->init;
         L->init=p;
     }
@@ -31,7 +25,6 @@ void Finaliza_P(Pilha *L){
         free(p);
         p = L->init;
     }
-    //free(L);
     return;
 }
 
@@ -39,12 +32,12 @@ void Finaliza_P(Pilha *L){
 
 void Pop(Pilha *L, elem x[], int *erro){
     no_P *p=L->init;
-    if (p!=NULL){
+    if (p==NULL) *erro=1; //Erro se pilha vazia
+    else {
         *erro=0;
         strcpy(x,p->info);
         L->init=p->prox;
         free(p);
     }
-    else *erro=1;
     return;
 }

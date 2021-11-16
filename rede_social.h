@@ -20,38 +20,40 @@ typedef struct Lista_usuarios{
 } Users;
 
 
-User* Busca(Users *, char []);
+//Busca em Users um usuário identificado pelo apelido 
+User* Busca(Users *, char []); 
 
+//Veririca se um usuário está na lista de parceiro do outro
 int Busca_parceiros(Users *,char [], char []);
 
 
-void Criar_usuarios(Users *);
-//Users* Criar_usuarios(void);
-// a) Cadastro de usuários                       :D
+void Criar_Users(Users *);
+
+// a) Cadastro de usuários                       
 void Cadastro(Users *, char [], char [], int *);
 
 
-// b) Lista usuários e informações               :D
+// b) Lista usuários e informações               
 void Imprime(Users *);
 
 
-// c) Pedir para ser um parceiro                 :D
+// c) Pedir para ser um parceiro                 
 void Convidar(Users *, char [], char [], int *);
 
 
-// d) Avaliar sua lista de pedidos               :D
+// d) Avaliar sua lista de pedidos               
 void Avaliar_pedidos(Users *, char [], int *);
 
 
-// e) Enviar mensagem para o parceiro             :D
+// e) Enviar mensagem para o parceiro         Falta: Ler mensagens com espaço    
 void Enviar_mensagem(Users *, char [], char [], char [], int *);
 
 
-// f) Ver mensagens recebidas                     :D
-void Ver_mensagens(Users *, char []);
+// f) Ver mensagens recebidas                     
+void Ver_mensagens(Users *, char [], int *);
 
 
-// g) Sugerir novas parcerias
+// g) Sugerir novas parcerias                       :D
 void Sugestao_parceiros(Users *L);
 
 

@@ -2,24 +2,19 @@
 #include <string.h>
 //novo
 void Cria_F(Fila *L){
-    //Fila *Laux = (Fila*) malloc(sizeof(Fila));
-    //if (Laux==NULL) return(NULL);
-    //else{
     L->init=NULL;
     L->fim=NULL;
-    //}
 }
 
 void Entra(Fila *L, elem x[], int *erro){
     no_F *p;
     p = (no_F*) malloc(sizeof(no_F));
-    if (p==NULL) *erro = 1;
+    if (p==NULL) *erro = 1; // Erro ao criar espaço na memória
     else{
         *erro = 0;
         strcpy(p->info, x);
-        //p->info = x;
         p->prox = NULL;
-        if (L->init==NULL) L->init=p;
+        if (L->init==NULL) L->init=p; //Se fila vazia, init aponta para o adicionado (primeiro)
         else L->fim->prox=p;
         L->fim=p;
     }
@@ -33,8 +28,6 @@ void Finaliza_F(Fila *L){
         free(p);
         p = L->init;
     }
-    //L->fim=NULL; Apagando tudo
-    //free(L);
     return;
 }
 
@@ -48,6 +41,6 @@ void Sai(Fila *L, elem x[], int *erro){
         L->init=p->prox;
         free(p);
     }
-    else *erro=1;
+    else *erro=1; //Erro caso a fila esteja vazia
     return;
 }

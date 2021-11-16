@@ -4,7 +4,7 @@
 
 typedef char elem;
 
-typedef struct block{  // PERGUNTAR PRO RONEY SE PRECISA MUDAR O NOME DA STRUCT
+typedef struct block{ 
     struct block *prox;
     elem info[30];
 } no_F;
