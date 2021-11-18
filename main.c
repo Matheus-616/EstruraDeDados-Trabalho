@@ -2,11 +2,10 @@
 #include "rede_social.h"
 
 // PERGUNTAS PARA O THIAGO
-// Que tipo de prints ou scans a gente tem que fazer nas funções e não aqui? .
-// É muito desperdício de memória usar o método de print das mensagens que estamos usando?
-// As mensagens podem ser apagadas depois de lidas?
-// Perguntar se vale a pena fazer um ponteiro para void na info da lista de parceiros. (pq queremos um para User)
-// Pode tirar as funções não utilizadas nos TAD's pilha, fila e lista?
+// Que tipo de prints ou scans a gente tem que fazer nas funções e não aqui? . | regra de ouro: NENHUM NO TAD.
+// As mensagens podem ser apagadas depois de lidas? | Podem, mas se quiser guardar, passa uma cópia.
+// A lista de parceiros é uma lista dinâmica e encadeada de strings, não é muito eficiente, mas pode deixar assim? | tranquilo
+// Pode tirar as funções não utilizadas nos TAD's pilha, fila e lista? |Pode
 
 int main(){
     Users L;
@@ -28,15 +27,15 @@ int main(){
         printf("\t 8) Renicializar o sistema.\n");
         printf("\n \t Opção: ");
 
-        scanf("%d", &opcao);
+        scanf("%d%*c", &opcao);
         //printf("\n");
 
         if (opcao==1){ 
             
             printf("\tEntre com seu nome: ");
-            scanf("%s", nome);
+            scanf("%50[^\n]%*c", nome);
             printf("\tEntre com seu apelido: ");
-            scanf("%s", meu_apelido);
+            scanf("%30[^\n]%*c", meu_apelido);
             Cadastro(&L, nome, meu_apelido, &erro);
             if (erro==0) printf("Usuário cadastrado com sucesso\n");
             if (erro==2) printf("Indivíduo já cadastrado\n");
@@ -51,9 +50,9 @@ int main(){
 
         else if (opcao==3){
             printf("\t Entre com seu apelido: ");
-            scanf("%s", meu_apelido);
+            scanf("%30[^\n]%*c", meu_apelido);
             printf("\t Entre com o apelido de quem quer ser parceiro: ");
-            scanf("%s", outro_apelido);
+            scanf("%30[^\n]%*c", outro_apelido);
             Convidar(&L, meu_apelido, outro_apelido, &erro);
             if (erro==0) printf("Pedido encaminhado com sucesso!\n");
             if (erro==2) printf("Usuário não cadastrado\n");
@@ -63,7 +62,7 @@ int main(){
 
         else if (opcao==4){
             printf("\t Entre com seu apelido: ");
-            scanf("%s", meu_apelido);
+            scanf("%30[^\n]%*c", meu_apelido);
             Avaliar_pedidos(&L, meu_apelido, &erro);
             if (erro==0) printf("Operação realizada com sucesso\n");
             if (erro==2) printf("Usuário não cadastrado");
@@ -72,11 +71,11 @@ int main(){
 
         else if (opcao==5){
             printf("\t Entre com seu apelido: ");
-            scanf("%s", meu_apelido);
+            scanf("%30[^\n]%*c", meu_apelido);
             printf("\t Entre com o apelido de quem quer enviar mensagem: ");
-            scanf("%s", outro_apelido);
+            scanf("%30[^\n]%*c", outro_apelido);
             printf("Entre com a mensagem: ");
-            scanf("%s", mensagem);
+            scanf("%140[^\n]%*c", mensagem);
             Enviar_mensagem(&L, mensagem, meu_apelido, outro_apelido, &erro);
             if (erro==0) printf("Mensagem enviada com Sucesso\n");
             if (erro==2) printf("Usuário não cadastrado\n");
@@ -85,7 +84,7 @@ int main(){
 
         else if (opcao==6){
             printf("Entre com seu apelido: ");
-            scanf("%s", meu_apelido);
+            scanf("%30[^\n]%*c", meu_apelido);
             Ver_mensagens(&L, meu_apelido, &erro);
             if (erro==2) printf("Usuário não cadastrado\n");
         }

@@ -151,15 +151,13 @@ void Enviar_mensagem(Users *L, char mensagem[140], char remetente[30], char dest
 
 void Ver_mensagens(Users *L, char meu_apelido[30], int *erro){
     User *eu=Busca(L,meu_apelido);
-
+    int EstaVazia=0;  //Variável para verificar se está pilha já está vazia
+    char mensagem[140], apelido[30];
     if (eu!=NULL){
         *erro=0;
 
         printf("Suas mensagens são: \n");
-        //Variável para verificar se está pilha já está vaiza
         //Erro de pilha vazia usado para verificar
-        int EstaVazia=0; 
-        char mensagem[140], apelido[30];
         Pop(eu->mensagens, apelido, &EstaVazia);
         Pop(eu->mensagens, mensagem, &EstaVazia);
     
@@ -176,7 +174,11 @@ void Ver_mensagens(Users *L, char meu_apelido[30], int *erro){
 
 
 void Sugestao_parceiros(Users *L){
-
+// ve todas as pessoas.
+// para cada ve todos os amigos.
+// todas combinações par a par de amigo.
+// para cada par confere se são amigos entre si.
+// se não forem amigos coloca como sugestão.
 }
 
 

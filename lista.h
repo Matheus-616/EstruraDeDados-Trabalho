@@ -9,7 +9,7 @@ typedef char elem;
 
 typedef struct bloco{
     struct bloco *prox;
-    elem info[];
+    elem info[30];
 } no;
 
 typedef struct lista{
