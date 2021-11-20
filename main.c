@@ -57,6 +57,7 @@ int main(){
             if (erro==0) printf("Pedido encaminhado com sucesso!\n");
             if (erro==2) printf("Usuário não cadastrado\n");
             if (erro==3) printf("Você já é parceiro dessa pessoa\n");
+            if (erro==4) printf("Essa pessoa te fez um pedido de parceria, verifique!\n");
         }
 
 

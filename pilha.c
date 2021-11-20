@@ -41,3 +41,4 @@ void Pop(Pilha *L, elem x[], int *erro){
     }
     return;
 }
+

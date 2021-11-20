@@ -17,3 +17,4 @@ void Cria_P(Pilha *L);
 void Push(Pilha *, elem *, int *);
 void Finaliza_P(Pilha *);
 void Pop(Pilha *, elem *, int *);
+

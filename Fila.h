@@ -17,3 +17,4 @@ void Cria_F(Fila *L);
 void Entra(Fila *, elem *, int *);
 void Finaliza_F(Fila *);
 void Sai(Fila *, elem *, int *);
+int Busca_F(Fila *, elem *);

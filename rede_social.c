@@ -18,6 +18,9 @@ User* Busca(Users *L, char apelido[30]){
 int Busca_parceiros(Users *L, char eu[30], char possivel_parceiro[30]){
     User *eumesmo=Busca(L,eu);
     if (eumesmo==NULL) return(2); // Apelido não cadastrados 
+    else if(Busca_F(eumesmo->pedidos, possivel_parceiro)){
+        return(4);
+    }
     else{
         return(Busca_L(eumesmo->parceiros, possivel_parceiro));
     }
@@ -94,7 +97,7 @@ void Convidar(Users *L, char meu_apelido[30], char apelido_convidado[30], int *e
         //Parceria já existente erro=3;
 
         //Confere 
-        *erro=Busca_parceiros(L, meu_apelido, apelido_convidado);
+        *erro=Busca_parceiros(L, meu_apelido, apelido_convidado); // Erro ainda pode valer 2
         if (*erro==0)
             Entra(convidado->pedidos, meu_apelido, erro);
         else if(*erro==1) *erro=3; // Erro de parceria já existente

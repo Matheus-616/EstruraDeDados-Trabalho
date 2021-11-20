@@ -44,3 +44,12 @@ void Sai(Fila *L, elem x[], int *erro){
     else *erro=1; //Erro caso a fila esteja vazia
     return;
 }
+
+int Busca_F(Fila *F, elem x[]){
+    no_F *p=F->init;
+    while (p!=NULL && strcmp(p->info,x)){
+        p = p->prox;
+    }
+    if (p==NULL) return(0); // Retorna 0 se chegou no final e não entrou
+    else return(1);
+}
