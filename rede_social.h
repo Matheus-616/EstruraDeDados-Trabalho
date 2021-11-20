@@ -54,7 +54,7 @@ void Ver_mensagens(Users *, char [], int *);
 
 
 // g) Sugerir novas parcerias                       :D
-void Sugestao_parceiros(Users *L);
+void Sugestao_parceiros(Users *L, int *);
 
 
 

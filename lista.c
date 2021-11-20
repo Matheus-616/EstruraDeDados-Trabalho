@@ -1,6 +1,6 @@
 #include "lista.h"
 
-void Cria(Lista *L){
+void Cria_L(Lista *L){
     L->init=NULL;
     L->fim=NULL;
 }

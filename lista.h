@@ -16,7 +16,7 @@ typedef struct lista{
     no *init, *fim;
 } Lista;
 
-void Cria(Lista *L);
+void Cria_L(Lista *L);
 void Insere(Lista *, elem *, int *);
 void Finaliza_L(Lista *);
 int Busca_L(Lista *, elem *);

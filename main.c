@@ -89,7 +89,10 @@ int main(){
             if (erro==2) printf("Usuário não cadastrado\n");
         }
 
-        else if (opcao==7){}
+        else if (opcao==7){
+            printf("\t Sugestões de novas parcerias: \n");
+            Sugestao_parceiros(&L, &erro);
+        }
 
 
         if (erro==1) printf("Erro ao criar espaço de memória.\n");

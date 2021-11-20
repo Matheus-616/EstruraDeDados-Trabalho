@@ -49,7 +49,7 @@ void Cadastro(Users *L, char nome[50], char apelido[30], int *erro){
         strcpy(L->fim->apelido,apelido);
         
         //Inicializando a lista de parceiros, a fila de pedidos e a pilha de mensagens.
-        Cria(L->fim->parceiros);
+        Cria_L(L->fim->parceiros);
         Cria_F(L->fim->pedidos);
         Cria_P(L->fim->mensagens);
     }
@@ -173,12 +173,38 @@ void Ver_mensagens(Users *L, char meu_apelido[30], int *erro){
 
 
 
-void Sugestao_parceiros(Users *L){
+void Sugestao_parceiros(Users *L, int *erro){
 // ve todas as pessoas.
 // para cada ve todos os amigos.
 // todas combinações par a par de amigo.
 // para cada par confere se são amigos entre si.
 // se não forem amigos coloca como sugestão.
+
+    // listas para sugestões para cada usuário, de pares já feitos (para não repetir par) e de usuários analisados
+    Lista sugestoes, analisados; 
+    Cria_L(&sugestoes);
+    Cria_L(&analisados);
+    User *aux=L->inicio, *aux2;
+    no *aux_L,*aux2_L;
+    while(aux!=NULL) { // percorre todos os usuários
+        Insere(&sugestoes, aux->apelido, erro);
+        aux_L=aux->parceiros->init;
+        while(aux_L!=NULL){ // percorre todos os parceiros do usuário da vez
+            aux2=Busca(L,aux_L->info);
+            aux2_L=aux2->parceiros->init;
+            while(aux2_L!=NULL){ // percorre os parceiros de cada parceiro do usuário da vez
+                if (!Busca_L(aux->parceiros,aux2_L->info) && !Busca_L(&sugestoes,aux2_L->info) && !Busca_L(&analisados,aux2_L->info)){ 
+                    Insere(&sugestoes,aux2_L->info, erro); //coloca nas sugestões do usuário da vez os que não estão lá e nem nas sugestões.
+                    printf("%s, %s\n", aux->apelido,aux2_L->info);
+                }
+                aux2_L=aux2_L->prox;
+            }
+            aux_L=aux_L->prox;
+        }
+        Finaliza_L(&sugestoes);
+        Insere(&analisados, aux->apelido, erro);
+        aux=aux->prox;
+    }
 }
 
 
